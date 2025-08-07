@@ -1,177 +1,108 @@
-**Explicación técnica estructurada sobre WPScan y sus funciones de enumeración:**
+**FLASHCARD COMPLETA – WPScan: Detección de Temas, Plugins, Usuarios y Vulnerabilidades**
 
 ---
 
-### 1. **Enumeración de Temas (`--enumerate t`)**
+### **1. Enumerar el *theme activo***
 
-#### Mecanismo:
+**Técnica manual:**
 
-WPScan analiza rutas conocidas como:
+* Abrir navegador → F12 → pestaña **Network**
+* Visitar sitio → buscar URLs con `/wp-content/themes/<nombre>`
+* Ejemplo:
+  `http://target/wp-content/themes/twentytwentyone/assets/` → theme activo = `twentytwentyone`
 
-```
-/wp-content/themes/<nombre-del-tema>/
-```
-
-y verifica archivos o recursos cargados desde esa ubicación.
-
-#### Técnica manual equivalente:
-
-* Abrir el sitio en navegador.
-* Ir a pestaña "Network" en DevTools.
-* Identificar recursos CSS o JS dentro de `/themes/<tema>/assets/`.
-
-#### Comando:
+**Técnica automatizada:**
 
 ```bash
-wpscan --url http://target.com --enumerate t
+wpscan --url http://target/ --enumerate t
 ```
 
-#### Resultado:
-
-* Devuelve nombre del tema activo.
-* Indica método de descubrimiento (e.g., "Known locations").
+* Detecta el *theme activo* usando rutas conocidas.
+* Ejemplo: detecta `twentytwenty` porque encontró su carpeta en `/wp-content/themes/`.
 
 ---
 
-### 2. **Enumeración de Plugins (`--enumerate p`)**
+### **2. Enumerar *plugins instalados***
 
-#### Mecanismo:
+**Técnica por listado de directorio:**
 
-Busca rutas como:
+* Si el servidor permite *Directory Listing* y no hay `index.html` o `index.php`, muestra los archivos de `/wp-content/plugins/`.
 
-```
-/wp-content/plugins/<nombre-del-plugin>/
-```
-
-Verifica existencia y archivos como `readme.txt` para identificar versión.
-
-#### Condición explotada:
-
-* Directory Listing habilitado.
-* Plugins sin archivo `index.*` en el directorio.
-
-#### Comando:
+**Técnica automatizada:**
 
 ```bash
-wpscan --url http://target.com --enumerate p
+wpscan --url http://target/ --enumerate p
 ```
 
-#### Resultado:
-
-* Lista plugins instalados.
-* En algunos casos también devuelve la versión (si `readme.txt` está accesible).
+* Detecta plugins conocidos por nombre de carpeta, archivos, assets embebidos y `README.txt`
+* Ejemplo: detecta `easy-table-of-contents`, extrae su versión desde `/wp-content/plugins/easy-table-of-contents/readme.txt`
 
 ---
 
-### 3. **Enumeración de Usuarios (`--enumerate u`)**
+### **3. Enumerar *usuarios (autores)***
 
-#### Mecanismo:
-
-* WordPress asigna URLs predecibles a autores:
-
-```
-/?author=1
-```
-
-* Redirecciona a:
-
-```
-/author/<username>
-```
-
-WPScan automatiza esta detección mediante pruebas secuenciales de IDs de autores.
-
-#### Comando:
+**Técnica automatizada:**
 
 ```bash
-wpscan --url http://target.com --enumerate u
+wpscan --url http://target/ --enumerate u
 ```
 
-#### Resultado:
-
-* Devuelve lista de nombres de usuario válidos (autores).
+* Extrae usernames de los autores de posts.
 
 ---
 
-### 4. **Enumeración de Vulnerabilidades (`--enumerate v`)**
+### **4. Detectar *vulnerabilidades***
 
-#### Requiere:
-
-* API Key de [WPVulnDB](https://wpvulndb.com)
-* Añadirla en configuración de WPScan (`~/.wpscan/cli_options.json`)
-
-#### Ejemplo:
+**Requiere configurar WPScan con API key de WPVulnDB**
+**Comando:**
 
 ```bash
-wpscan --url http://target.com --enumerate vp
+wpscan --url http://target/ --enumerate vp
 ```
 
-* `v` = buscar vulnerabilidades.
-* `p` = aplicar sobre plugins.
-
-#### Resultado:
-
-* Lista plugins + versiones + vulnerabilidades conocidas.
+* `v` = Vulnerabilidades
+* `p` = Plugins (puede combinarse con `t`, `u`, etc.)
 
 ---
 
-### 5. **Ataque por Fuerza Bruta (`--passwords`, `--usernames`)**
+### **5. Ataque de contraseñas (bruteforce)**
 
-#### Requisitos:
-
-* Lista de usuarios válidos (`--enumerate u`)
-* Diccionario de contraseñas (ej: `rockyou.txt`)
-
-#### Comando:
+**Comando:**
 
 ```bash
-wpscan --url http://target.com --usernames usuario1 --passwords rockyou.txt
+wpscan --url http://target/ --usernames <usuario> --passwords rockyou.txt
 ```
 
-#### Resultado:
-
-* Intenta login con cada combinación.
-* Devuelve credenciales válidas si encuentra alguna.
+* Requiere lista de usuarios previa (`--enumerate u`)
 
 ---
 
-### 6. **Modos de Detección (`--plugins-detection`)**
+### **6. Ajustar *nivel de detección/agresividad***
 
-Por defecto, WPScan usa detección pasiva. Para aumentar cobertura:
-
-#### Comando:
+**Plugins detection pasiva (default) o agresiva (más ruidosa):**
 
 ```bash
-wpscan --url http://target.com --enumerate p --plugins-detection aggressive
+wpscan --url http://target/ --enumerate p --plugins-detection aggressive
 ```
 
-#### Modos disponibles:
-
-* `passive`
-* `mixed`
-* `aggressive`
-
-Más agresividad = más solicitudes HTTP = mayor probabilidad de activación de WAF.
+* Riesgo de detección por WAF o firewall si no se ajusta correctamente.
 
 ---
 
-### 7. **Resumen de Flags Clave**
+### **7. Resumen de flags WPScan**
 
-| Flag                          | Función                           | Ejemplo completo                                                 |
-| ----------------------------- | --------------------------------- | ---------------------------------------------------------------- |
-| `--enumerate p`               | Enumerar plugins                  | `wpscan --url <target> --enumerate p`                            |
-| `--enumerate t`               | Enumerar temas                    | `wpscan --url <target> --enumerate t`                            |
-| `--enumerate u`               | Enumerar usuarios                 | `wpscan --url <target> --enumerate u`                            |
-| `--enumerate vp`              | Plugins + vulnerabilidades        | `wpscan --url <target> --enumerate vp`                           |
-| `--plugins-detection`         | Nivel de agresividad de detección | `--plugins-detection aggressive`                                 |
-| `--usernames` + `--passwords` | Fuerza bruta de credenciales      | `wpscan --url <target> --usernames user --passwords rockyou.txt` |
-
----
-
-**Notas operativas:**
-
-* WPScan no es anónimo. Usar proxy como Burp o Tor si se requiere evasión.
-* Uso agresivo puede activar mecanismos de defensa automática (WAF, rate-limiting, bloqueo por IP).
-* No requiere autenticación salvo para escaneo de sitios protegidos por login.
+| Flag                             | Función                                  | Ejemplo completo                               |
+| -------------------------------- | ---------------------------------------- | ---------------------------------------------- |
+| `p`                              | Enumerar plugins                         | `--enumerate p`                                |
+| `t`                              | Enumerar theme activo                    | `--enumerate t`                                |
+| `u`                              | Enumerar nombres de usuario (autores)    | `--enumerate u`                                |
+| `v`                              | Vulnerabilidades (requiere WPVulnDB API) | `--enumerate vp`                               |
+| `--plugins-detection aggressive` | Perfil agresivo para detectar plugins    | `--enumerate p --plugins-detection aggressive` |
 
 ---
+
+What is the name of the other aggressiveness profile that we can use in our WPScan command?
+
+    passive
+
+
