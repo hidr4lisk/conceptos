@@ -1,5 +1,5 @@
-```
 Front:
+
 What are essential Linux commands and techniques for enumeration after gaining access to a system, and what key information do they provide?
 
 Back:
@@ -44,6 +44,8 @@ Back:
 10. **/etc/passwd**
     - Lists all system users.
     - Real users often have home directories under `/home`.
+    - Podemos cortar con `cat /etc/passwd | cut -d ":" -f 1`, esto da la lista completa
+    - También podemos usar `cat /etc/passwd | grep home`para tener solo USUARIOS
 
 11. **history**
     - Displays command history.
@@ -96,4 +98,3 @@ Back:
 
 Summary:
 Post-access enumeration involves commands to identify system details, processes, users, environment, network, and potential privilege escalation vectors. Each command uncovers specific data critical for planning lateral movement, privilege escalation, or data exfiltration.
-```
