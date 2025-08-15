@@ -130,5 +130,3 @@ uid=0(root) gid=0(root) groups=0(root),1001(karen)
 * Kernel vulnerable: `3.13.0-24-generic`.
 
 ---
-
-Si querés, puedo hacer **una versión ultra resumida tipo tarjeta de estudio rápida** para repasar pasos sin comandos largos.
