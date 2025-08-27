@@ -5,8 +5,12 @@ Assume the empty string is an isogram. Ignore letter case.
 '''
 
 def is_isogram(string):
-    for i in string.lower():
-        if string.count(i) > 1 or string != "":
-            return False
+    if string == "":
+        return True
+    else:
+        for i in string.lower():
+            if string.lower().count(i) > 1:
+                return False
         else:
             return True
+        
