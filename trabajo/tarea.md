@@ -11,7 +11,6 @@ Para el punto 1. Vamos a hacer 2 versiones, 1 Plantilla 1932 y otra 2024, y la o
 
 La información solicitada para los países mencionados está disponible en diversas fuentes oficiales y estudios sectoriales. A continuación, se detallan los datos relevantes:
 
-
 El cuadro compara Argentina, Estados Unidos, Francia y Alemania en dos momentos históricos, mostrando:
 
 Kilómetros de carreteras asfaltadas
