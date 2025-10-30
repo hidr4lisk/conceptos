@@ -2,26 +2,26 @@
 
 Ruta actual -> Título extraído -> Nombre propuesto
 
-- `pentesting/linux/-timapin-talacinrpidayu-ofla-hcard.md` -> `SSTImap — Instalación rápida y uso (flashcard)` -> `SSTImap - — - Instalación - rápida - y - uso - (flashcard).md`
-- `pentesting/linux/1precondicione-verificarcpuypreparar-i-tema.md` -> `Verificado el objetivo: crear VM Parrot HTB con KVM/QEMU en Ubuntu. Pasos mínimos, comandos ejecutables, flags y comprobaciones.` -> `Verificado - el - objetivo - crear - VM - Parrot - HTB - con - KVMQEMU - en - Ubuntu. - Pasos - míni....md`
-- `pentesting/linux/binba-h.md` -> `---` -> `---.md`
-- `pentesting/linux/bu-car-archivo-.md` -> `find / -type f -name "rockyou.txt" 2>/dev/null` -> `find -  - -type - f - -name - rockyou.txt - 2devnull.md`
-- `pentesting/linux/config-login-kali.md` -> `sudo lightdm-gtk-greeter-settings` -> `sudo - lightdm-gtk-greeter-settings.md`
-- `pentesting/linux/crunch-crea-diccionario.md` -> `**Flashcard – Crunch (generación de diccionarios con patrón y rango)**` -> `Flashcard - – - Crunch - (generación - de - diccionarios - con - patrón - y - rango).md`
-- `pentesting/linux/cut.md` -> `Ese comando hace lo siguiente:` -> `Ese - comando - hace - lo - siguiente.md`
-- `pentesting/linux/e-calada-practica1-linux.md` -> `**Flashcard: Escalada de privilegios en Ubuntu 3.13.0-24 usando exploit overlayfs**` -> `Flashcard - Escalada - de - privilegios - en - Ubuntu - 3.13.0-24 - usando - exploit - overlayfs.md`
-- `pentesting/linux/elerrorocurreporquela-clave-gpgquevalidanla-firma-criptogrfica-delrepo-itoriofueronrotada-cambiada-ytu-i-temanotienelanu.md` -> `### El error ocurre porque las claves GPG que validan las firmas criptográficas del repositorio fueron rotadas (cambiadas) y tu sistema no tiene la nueva clave pública.` -> `### - El - error - ocurre - porque - las - claves - GPG - que - validan - las - firmas - criptográfi....md`
-- `pentesting/linux/fla-hcardcontroldelnavegadorpredeterminadoenlinux.md` -> `### Flashcard: Control del navegador predeterminado en Linux` -> `### - Flashcard - Control - del - navegador - predeterminado - en - Linux.md`
-- `pentesting/linux/fuente-.md` -> `Flashcard: **Instalar fuente TTF en Ubuntu para usar en LibreOffice**` -> `Flashcard - Instalar - fuente - TTF - en - Ubuntu - para - usar - en - LibreOffice.md`
-- `pentesting/linux/gobu-terdir-u-itio-wu-r-harewordli-t-dirbbigtxt-t250teegobu-ter-root-big.md` -> `gobuster dir -u SITIO -w /usr/share/wordlists/dirb/big.txt -t 250 | tee gobuster-root-big` -> `gobuster - dir - -u - SITIO - -w - usrsharewordlistsdirbbig.txt - -t - 250 -  - tee - gobuster-ro....md`
+- `pentesting/linux/Control del navegador predeterminado en Linux.md` -> `### Flashcard: Control del navegador predeterminado en Linux` -> `### - Flashcard - Control - del - navegador - predeterminado - en - Linux.md`
+- `pentesting/linux/Crunch (generación de diccionarios con patrón y rango).md` -> `**Flashcard – Crunch (generación de diccionarios con patrón y rango)**` -> `Flashcard - – - Crunch - (generación - de - diccionarios - con - patrón - y - rango).md`
+- `pentesting/linux/El error ocurre porque las claves GPG que validan las firmas criptográficas d.md` -> `### El error ocurre porque las claves GPG que validan las firmas criptográficas del repositorio fueron rotadas (cambiadas) y tu sistema no tiene la nueva clave pública.` -> `### - El - error - ocurre - porque - las - claves - GPG - que - validan - las - firmas - criptográfi....md`
+- `pentesting/linux/Escalada de privilegios en Ubuntu 3.13.0-24 usando exploit overlayfs.md` -> `**Flashcard: Escalada de privilegios en Ubuntu 3.13.0-24 usando exploit overlayfs**` -> `Flashcard - Escalada - de - privilegios - en - Ubuntu - 3.13.0-24 - usando - exploit - overlayfs.md`
+- `pentesting/linux/Ese comando hace lo siguiente.md` -> `Ese comando hace lo siguiente:` -> `Ese - comando - hace - lo - siguiente.md`
+- `pentesting/linux/Fabricante.md` -> `Fabricante` -> `Fabricante.md`
+- `pentesting/linux/Instalar fuente TTF en Ubuntu para usar en LibreOffice.md` -> `Flashcard: **Instalar fuente TTF en Ubuntu para usar en LibreOffice**` -> `Flashcard - Instalar - fuente - TTF - en - Ubuntu - para - usar - en - LibreOffice.md`
+- `pentesting/linux/Netcat Bind and Reverse Shells (Linux & Windows).md` -> `**Flashcard: Netcat Bind and Reverse Shells (Linux & Windows)**` -> `Flashcard - Netcat - Bind - and - Reverse - Shells - (Linux - & - Windows).md`
+- `pentesting/linux/SSTImap - Instalación rápida y uso ().md` -> `SSTImap — Instalación rápida y uso (flashcard)` -> `SSTImap - — - Instalación - rápida - y - uso - (flashcard).md`
+- `pentesting/linux/Sí.md` -> `Sí.` -> `Sí..md`
+- `pentesting/linux/Verificado el objetivo crear VM Parrot HTB con KVMQEMU en Ubuntu. Pasos mínim.md` -> `Verificado el objetivo: crear VM Parrot HTB con KVM/QEMU en Ubuntu. Pasos mínimos, comandos ejecutables, flags y comprobaciones.` -> `Verificado - el - objetivo - crear - VM - Parrot - HTB - con - KVMQEMU - en - Ubuntu. - Pasos - míni....md`
+- `pentesting/linux/find -type f -name rockyou.txt 2devnull.md` -> `find / -type f -name "rockyou.txt" 2>/dev/null` -> `find -  - -type - f - -name - rockyou.txt - 2devnull.md`
+- `pentesting/linux/gobuster dir -u SITIO -w usrsharewordlistsdirbbig.txt -t 250 tee gobuster-roo.md` -> `gobuster dir -u SITIO -w /usr/share/wordlists/dirb/big.txt -t 250 | tee gobuster-root-big` -> `gobuster - dir - -u - SITIO - -w - usrsharewordlistsdirbbig.txt - -t - 250 -  - tee - gobuster-ro....md`
 - `pentesting/linux/guardar-alida-archivo-.md` -> `Redirigí la salida estándar a un archivo con `>` o `>>`.` -> `Redirigí - la - salida - estándar - a - un - archivo - con - `` - o - ``..md`
-- `pentesting/linux/hardware-info-dmidecode.md` -> `Fabricante` -> `Fabricante.md`
-- `pentesting/linux/metadato-docx.md` -> `Sí.` -> `Sí..md`
-- `pentesting/linux/netcat-bind-rever-e-linux-window-.md` -> `**Flashcard: Netcat Bind and Reverse Shells (Linux & Windows)**` -> `Flashcard - Netcat - Bind - and - Reverse - Shells - (Linux - & - Windows).md`
 - `pentesting/linux/pa-word-re-et-flow-vul-.md` -> `**Flashcard**` -> `Flashcard.md`
 - `pentesting/linux/po-t-hell-acce-linux-window-.md` -> `**Flashcard — Post-Shell Access (Linux & Windows)**` -> `Flashcard - — - Post-Shell - Access - (Linux - & - Windows).md`
 - `pentesting/linux/re-umenoperativo.md` -> `### RESUMEN OPERATIVO` -> `### - RESUMEN - OPERATIVO.md`
 - `pentesting/linux/rever-e-hell-kali.md` -> `**Flashcard 2 – Uso de `php-reverse-shell.php` en Kali**` -> `Flashcard - 2 - – - Uso - de - `php-reverse-shell.php` - en - Kali.md`
+- `pentesting/linux/sudo lightdm-gtk-greeter-settings.md` -> `sudo lightdm-gtk-greeter-settings` -> `sudo - lightdm-gtk-greeter-settings.md`
+- `pentesting/linux/untitled.md` -> `---` -> `---.md`
 - `pentesting/linux/upload-filter-.md` -> `Resumen técnico:` -> `Resumen - técnico.md`
 - `pentesting/linux/wfuzz-por-intruder.md` -> `El límite de Burp Free está en **Intruder**, no permite ataques masivos automáticos. Para un brute-force de API puedes replicar la misma lógica con **WFuzz o Curl + un diccionario**, que no tienen limitaciones. La clave es respetar exactamente el formato JSON que te indica Burp.` -> `El - límite - de - Burp - Free - está - en - Intruder, - no - permite - ataques - masivos - automá....md`
 - `pentesting/linux/which-ruta-ab-oluta.md` -> ``which` = utilidad que muestra la **ruta absoluta** del ejecutable que se ejecutaría al llamar un comando.` -> ``which` - = - utilidad - que - muestra - la - ruta - absoluta - del - ejecutable - que - se - ejecuta....md`
