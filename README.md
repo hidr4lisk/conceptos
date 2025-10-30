@@ -131,5 +131,13 @@ _vacío_
 - [mr-robot.zip](pentesting/assets/mr-robot.zip)
 
 ---
-_Generado automáticamente._
+Este repositorio agrupa notas personales, apuntes y scripts relacionados con pentesting y seguridad informática.
+
+Estructura principales:
+- `pentesting/` — notas organizadas por subcategorías (linux, web, windows, tools, post-exploitation, privilege-escalation, notes)
+- `scripts/` — scripts utilizados para automatización y pruebas
+- `docs/` — documentación o apuntes complementarios
+- `private/` — archivos privados / trabajo (no subir a remotos públicos si contienen datos sensibles)
+
+Si encontrás títulos o nombres de archivo poco legibles, ejecutá `python3 scripts/generate_rename_suggestions.py` para generar `RENAME_SUGGESTIONS.md` con propuestas automáticas, revisalas y apruebalas para aplicar los `git mv`.
 ```
