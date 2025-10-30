@@ -1,143 +1,106 @@
-```markdown
-# Índice del repositorio
+# Índice del repositorio (actualizado)
+Este README fue regenerado automáticamente para que los enlaces apunten a los archivos actuales tras la reorganización y normalización de nombres.
 
-Este índice fue generado automáticamente. Contiene enlaces relativos a las notas organizadas por categoría. Puedes editar este archivo si querés ajustar títulos o mover secciones.
+## Linux
 
-## Pentesting
+- [!/bin/bash](pentesting/linux/untitled.md)
+- [## El error ocurre porque las claves GPG que validan las firmas criptográficas del repositorio fueron rotadas (cambiadas) y tu sistema no tiene la nueva clave pública.](pentesting/linux/el-error-ocurre-porque-las-claves-gpg-que-validan-las-firmas.md)
+- [## Flashcard: Control del navegador predeterminado en Linux](pentesting/linux/flashcard-control-del-navegador-predeterminado-en-linux.md)
+- [## RESUMEN OPERATIVO](pentesting/linux/resumen-operativo.md)
+- [1. Precondiciones — verificar CPU y preparar sistema](pentesting/linux/verificado-el-objetivo-crear-vm-parrot-htb-con-kvm-qemu-en-u.md)
+- [el-limite-de-burp-free-esta-en-intruder-no-permite-ataques-m](pentesting/linux/el-limite-de-burp-free-esta-en-intruder-no-permite-ataques-m.md)
+- [ese-comando-hace-lo-siguiente](pentesting/linux/ese-comando-hace-lo-siguiente.md)
+- [fabricante](pentesting/linux/fabricante.md)
+- [find-type-f-name-rockyou-txt-2-dev-null](pentesting/linux/find-type-f-name-rockyou-txt-2-dev-null.md)
+- [flashcard](pentesting/linux/flashcard.md)
+- [flashcard-2-uso-de-php-reverse-shell-php-en-kali](pentesting/linux/flashcard-2-uso-de-php-reverse-shell-php-en-kali.md)
+- [flashcard-crunch-generacion-de-diccionarios-con-patron-y-ran](pentesting/linux/flashcard-crunch-generacion-de-diccionarios-con-patron-y-ran.md)
+- [flashcard-escalada-de-privilegios-en-ubuntu-3-13-0-24-usando](pentesting/linux/flashcard-escalada-de-privilegios-en-ubuntu-3-13-0-24-usando.md)
+- [flashcard-instalar-fuente-ttf-en-ubuntu-para-usar-en-libreof](pentesting/linux/flashcard-instalar-fuente-ttf-en-ubuntu-para-usar-en-libreof.md)
+- [flashcard-netcat-bind-and-reverse-shells-linux-windows](pentesting/linux/flashcard-netcat-bind-and-reverse-shells-linux-windows.md)
+- [flashcard-post-shell-access-linux-windows](pentesting/linux/flashcard-post-shell-access-linux-windows.md)
+- [gobuster dir -u SITIO -w /usr/share/wordlists/dirb/big.txt -t 250 | tee gobuster-root-big](pentesting/linux/gobuster-dir-u-sitio-w-usr-share-wordlists-dirb-big-txt-t-25.md)
+- [redirigi-la-salida-estandar-a-un-archivo-con-o](pentesting/linux/redirigi-la-salida-estandar-a-un-archivo-con-o.md)
+- [resumen-tecnico](pentesting/linux/resumen-tecnico.md)
+- [si](pentesting/linux/si.md)
+- [SSTImap — Instalación rápida y uso (flashcard)](pentesting/linux/sstimap-instalacion-rapida-y-uso-flashcard.md)
+- [sudo-lightdm-gtk-greeter-settings](pentesting/linux/sudo-lightdm-gtk-greeter-settings.md)
+- [which-utilidad-que-muestra-la-ruta-absoluta-del-ejecutable-q](pentesting/linux/which-utilidad-que-muestra-la-ruta-absoluta-del-ejecutable-q.md)
 
-### Assets
+## Notes
 
-_vacío_
-
-### Linux
-
-- [SSTImap — Instalación rápida y uso (flashcard)](pentesting/linux/-timapin-talacinrpidayu-ofla-hcard.md)
-- [1. Precondiciones — verificar CPU y preparar sistema](pentesting/linux/1precondicione-verificarcpuypreparar-i-tema.md)
-- [!/bin/bash](pentesting/linux/binba-h.md)
-- [Bu Car Archivo ](pentesting/linux/bu-car-archivo-.md)
-- [Config Login Kali](pentesting/linux/config-login-kali.md)
-- [Crunch Crea Diccionario](pentesting/linux/crunch-crea-diccionario.md)
-- [Cut](pentesting/linux/cut.md)
-- [E Calada Practica1 Linux](pentesting/linux/e-calada-practica1-linux.md)
-- [El error ocurre porque las claves GPG que validan las firmas criptográficas del repositorio fueron rotadas (cambiadas) y tu sistema no tiene la nueva clave pública.](pentesting/linux/elerrorocurreporquela-clave-gpgquevalidanla-firma-criptogrfica-delrepo-itoriofueronrotada-cambiada-ytu-i-temanotienelanu.md)
-- [Flashcard: Control del navegador predeterminado en Linux](pentesting/linux/fla-hcardcontroldelnavegadorpredeterminadoenlinux.md)
-- [Fuente ](pentesting/linux/fuente-.md)
-- [gobuster dir -u SITIO -w /usr/share/wordlists/dirb/big.txt -t 250 | tee gobuster-root-big](pentesting/linux/gobu-terdir-u-itio-wu-r-harewordli-t-dirbbigtxt-t250teegobu-ter-root-big.md)
-- [Guardar Alida Archivo ](pentesting/linux/guardar-alida-archivo-.md)
-- [Hardware Info Dmidecode](pentesting/linux/hardware-info-dmidecode.md)
-- [Metadato Docx](pentesting/linux/metadato-docx.md)
-- [Netcat Bind Rever E Linux Window ](pentesting/linux/netcat-bind-rever-e-linux-window-.md)
-- [Pa Word Re Et Flow Vul ](pentesting/linux/pa-word-re-et-flow-vul-.md)
-- [Po T Hell Acce Linux Window ](pentesting/linux/po-t-hell-acce-linux-window-.md)
-- [RESUMEN OPERATIVO](pentesting/linux/re-umenoperativo.md)
-- [Rever E Hell Kali](pentesting/linux/rever-e-hell-kali.md)
-- [Upload Filter ](pentesting/linux/upload-filter-.md)
-- [Wfuzz Por Intruder](pentesting/linux/wfuzz-por-intruder.md)
-- [Which Ruta Ab Oluta](pentesting/linux/which-ruta-ab-oluta.md)
-
-### Notes
-
-- [**1. Enumerar el *theme activo***](pentesting/notes/1enumerarelthemeactivo.md)
-- [1. Instalar **gnome-terminal**:](pentesting/notes/1in-talargnome-terminal.md)
-- [1. Verificar exports en la víctima](pentesting/notes/1verificarexport-enlavctima.md)
-- [!/bin/bash](pentesting/notes/binba-h.md)
-- [Common Hell Payload ](pentesting/notes/common-hell-payload-.md)
-- [🔍 **Contexto de la máquina "Hammer"**](pentesting/notes/contextodelamquinahammer.md)
-- [Flashcard: APIs & Security](pentesting/notes/fla-hcardapi-ecurity.md)
-- [Flashcard: Principles of Security](pentesting/notes/fla-hcardprinciple-of-ecurity.md)
-- [**Flashcard: RustScan en Parrot OS (Docker/Moby)**](pentesting/notes/fla-hcardru-t-canenparroto-dockermoby.md)
-- [Flujo completo](pentesting/notes/flujocompleto.md)
+- [!/bin/bash](pentesting/notes/flashcard-cron-jobs-privilege-escalation.md)
+- [# **Flashcard: RustScan en Parrot OS (Docker/Moby)**](pentesting/notes/aqui-esta-la-flashcard-completa-centrada-solo-en-rustscan-co.md)
+- [# 🔍 **Contexto de la máquina "Hammer"**](pentesting/notes/perfecto-si-estas-estudiando-en-tryhackme-thm-este-codigo-es.md)
+- [## **1. Enumerar el *theme activo***](pentesting/notes/flashcard-completa-wpscan-deteccion-de-temas-plugins-usuario.md)
+- [## 1. Instalar **gnome-terminal**:](pentesting/notes/entiendo-el-mate-terminal-de-parrot-es-bastante-funcional-pe.md)
+- [## 1. Verificar exports en la víctima](pentesting/notes/flashcard-escalada-nfs-no-root-squash-paso-a-paso-reproducib.md)
+- [## Flashcard: APIs & Security](pentesting/notes/flashcard-apis-security.md)
+- [## Flashcard: Principles of Security](pentesting/notes/flashcard-principles-of-security.md)
+- [## Flujo completo](pentesting/notes/analisis-por-partes-del-comando.md)
+- [flashcard-common-shell-payloads](pentesting/notes/flashcard-common-shell-payloads.md)
+- [flashcard-concisa-sobre-lo-que-hiciste-con-qpdf](pentesting/notes/flashcard-concisa-sobre-lo-que-hiciste-con-qpdf.md)
+- [hagamos-mas-facil-dame-todo-en-un-json](pentesting/notes/hagamos-mas-facil-dame-todo-en-un-json.md)
 - [Hammer](pentesting/notes/hammer.md)
-- [listar recursivo, silenciando errores](pentesting/notes/li-tarrecur-ivo-ilenciandoerrore-.md)
-- [Mfa](pentesting/notes/mfa.md)
-- [Payload Allthething ](pentesting/notes/payload-allthething-.md)
-- [Qpdf Dividir](pentesting/notes/qpdf-dividir.md)
+- [la-autenticacion-multifactor-mfa-refuerza-la-seguridad-al-ex](pentesting/notes/la-autenticacion-multifactor-mfa-refuerza-la-seguridad-al-ex.md)
+- [listar recursivo, silenciando errores](pentesting/notes/resumen-tecnico-escalada-via-linux-capabilities-ejemplo-con.md)
 
-### Post Exploitation
+## Post-exploitation
 
-- [1. Concepto básico de reverse shell](pentesting/post-exploitation/1conceptob-icoderever-e-hell.md)
-- [1. Diferencia staged vs stageless](pentesting/post-exploitation/1diferencia-tagedv-tagele-.md)
-- [Po T Acce ](pentesting/post-exploitation/po-t-acce-.md)
-- [Rever E Hell Generator](pentesting/post-exploitation/rever-e-hell-generator.md)
+- [## 1. Concepto básico de reverse shell](pentesting/post-exploitation/resumen-estructurado-analisis-de-tecnicas-comunes-de-reverse.md)
+- [## 1. Diferencia staged vs stageless](pentesting/post-exploitation/generacion-y-uso-de-shells-meterpreter-staged-y-stageless-co.md)
+- [front](pentesting/post-exploitation/front.md)
+- [reverse-shell-generator-es-una-herramienta-web-https-revshel](pentesting/post-exploitation/reverse-shell-generator-es-una-herramienta-web-https-revshel.md)
 
-### Privilege Escalation
+## Privilege-escalation
 
-- [si extraes solo hashes $6$...](pentesting/privilege-escalation/-iextrae-oloha-he-6.md)
-- [Comando](pentesting/privilege-escalation/comando.md)
-- [Flashcards — Privilege Escalation with `sudo`](pentesting/privilege-escalation/fla-hcard-privilegee-calationwith-udo.md)
-- [Flashcard — Escalada de privilegios con PATH hijacking (TryHackMe)](pentesting/privilege-escalation/fla-hcarde-caladadeprivilegio-conpathhijackingtryhackme.md)
+- [## Comando](pentesting/privilege-escalation/explicacion-de-ese-comando.md)
+- [## Flashcard — Escalada de privilegios con PATH hijacking (TryHackMe)](pentesting/privilege-escalation/flashcard-escalada-de-privilegios-con-path-hijacking-tryhack.md)
+- [## Flashcards — Privilege Escalation with `sudo`](pentesting/privilege-escalation/flashcards-privilege-escalation-with-sudo.md)
+- [si extraes solo hashes $6$...](pentesting/privilege-escalation/resumen-operativo-suid-sgid-enumeracion-y-abuso-con-nano-sui.md)
 
-### Tools
+## Tools
 
-- [■ SOCAT 1.8.0.3 – Puntos clave](pentesting/tools/-ocat1803punto-clave.md)
-- [1. Bind Shell con Socat (Victim escucha, Attacker se conecta)](pentesting/tools/1bind-hellcon-ocatvictime-cuchaattacker-econecta.md)
-- [Descargar un script desde un servidor y guardarlo](pentesting/tools/de-cargarun-criptde-deun-ervidoryguardarlo.md)
-- [► FUNCIONAMIENTO DE SOCAT Y SHELLS ENCRIPTADAS](pentesting/tools/funcionamientode-ocaty-hell-encriptada-.md)
-- [Ipgho T](pentesting/tools/ipgho-t.md)
-- [I. **Resumen Operativo: Netcat como listener de bind/reverse shell**](pentesting/tools/ire-umenoperativonetcatcomoli-tenerdebindrever-e-hell.md)
-- [LinPeas](pentesting/tools/linpea-.md)
-- [Nikto](pentesting/tools/nikto.md)
-- [Probar exactamente la cabecera que Hydra envía (reproduce un intento)](pentesting/tools/probarexactamentelacabeceraquehydraenvareproduceunintento.md)
-- [RESUMEN COMPLETO: USO DE `msfvenom` Y `multi/handler`](pentesting/tools/re-umencompletou-odem-fvenomymultihandler.md)
-- [RESUMEN OPERATIVO](pentesting/tools/re-umenoperativo.md)
-- [Rever E Bind Ocat E Table](pentesting/tools/rever-e-bind-ocat-e-table.md)
-- [Tipos de binarios y scripts](pentesting/tools/tipo-debinario-y-cript-.md)
+- [# Tipos de binarios y scripts](pentesting/tools/linpeas-es-un-script-de-enumeracion-para-encontrar-vectores.md)
+- [# ■ SOCAT 1.8.0.3 – Puntos clave](pentesting/tools/socat-resumen-actualizado.md)
+- [## 1. Bind Shell con Socat (Victim escucha, Attacker se conecta)](pentesting/tools/flashcard-reverse-and-bind-shells-con-socat-en-linux.md)
+- [## I. **Resumen Operativo: Netcat como listener de bind/reverse shell**](pentesting/tools/i-resumen-operativo-netcat-como-listener-de-bind-reverse-she.md)
+- [## RESUMEN COMPLETO: USO DE `msfvenom` Y `multi/handler`](pentesting/tools/resumen-completo-uso-de-msfvenom-y-multi-handler.md)
+- [## RESUMEN OPERATIVO](pentesting/tools/resumen-operativo.md)
+- [## ► FUNCIONAMIENTO DE SOCAT Y SHELLS ENCRIPTADAS](pentesting/tools/funcionamiento-de-socat-y-shells-encriptadas.md)
+- [Descargar un script desde un servidor y guardarlo](pentesting/tools/que-es-curl.md)
+- [flashcard-ipghost](pentesting/tools/flashcard-ipghost.md)
+- [flashcard-nikto](pentesting/tools/flashcard-nikto.md)
+- [flashcard-socat-reverse-shell-y-bind-shell-tecnica-estable](pentesting/tools/flashcard-socat-reverse-shell-y-bind-shell-tecnica-estable.md)
+- [LinPeas](pentesting/tools/linpeas.md)
+- [Probar exactamente la cabecera que Hydra envía (reproduce un intento)](pentesting/tools/hydra-l-admin-p-downloads-pass-txt-enum-thm-http-get-labs-ba.md)
 
-### Web
+## Web
 
-- [ Ti Jinja2](pentesting/web/-ti-jinja2.md)
-- [1) HTTP (via UDF / external script)](pentesting/web/1httpviaudfexternal-cript.md)
-- [Gobu Ter Webenum Vho T Wordli T ](pentesting/web/gobu-ter-webenum-vho-t-wordli-t-.md)
-- [https://tryhackme.com/room/introtoshells](pentesting/web/http-tryhackmecomroomintroto-hell-.md)
-- [https://tryhackme.com/room/oauthvulnerabilities](pentesting/web/http-tryhackmecomroomoauthvulnerabilitie-.md)
-- [Out-of-band (OOB) SQL Injection — Guía paso a paso (MD)](pentesting/web/out-of-bandoob-qlinjectionguapa-oapa-omd.md)
-- [Resumen técnico (conciso)](pentesting/web/re-umentcnicoconci-o.md)
-- [Web Hell Ba Ica Netcat](pentesting/web/web-hell-ba-ica-netcat.md)
+- [## 1) HTTP (via UDF / external script)](pentesting/web/estructura-concisa-para-memorizacion-operativa-tecnica-mecan.md)
+- [## https://tryhackme.com/room/introtoshells](pentesting/web/https-tryhackme-com-room-introtoshells.md)
+- [## Resumen técnico (conciso)](pentesting/web/resumen-tecnico-conciso.md)
+- [flashcard-1-webshell-basica-con-netcat](pentesting/web/flashcard-1-webshell-basica-con-netcat.md)
+- [gobuster-web-enumeration](pentesting/web/gobuster-web-enumeration.md)
+- [https://tryhackme.com/room/oauthvulnerabilities](pentesting/web/https-tryhackme-com-room-oauthvulnerabilities.md)
+- [Out-of-band (OOB) SQL Injection — Guía paso a paso (MD)](pentesting/web/out-of-band-oob-sql-injection-guia-paso-a-paso-md.md)
+- [titulo-ssti-jinja2-ejecucion-de-comandos-explicacion-desde-0](pentesting/web/titulo-ssti-jinja2-ejecucion-de-comandos-explicacion-desde-0.md)
 
-### Windows
+## Windows
 
-- [► SHELLS CON NETCAT, MKFIFO Y POWERSHELL – APUNTE COMPLETO Y OPERATIVO](pentesting/windows/-hell-connetcatmkfifoypower-hellapuntecompletoyoperativo.md)
-- [1. Acotar por **cuenta de ejecución**](pentesting/windows/1acotarporcuentadeejecucin.md)
-- [1. Consideraciones previas](pentesting/windows/1con-ideracione-previa-.md)
-- [1. Crear webshell básico en Windows (ejemplo PHP o ASP)](pentesting/windows/1crearweb-hellb-icoenwindow-ejemplophpoa-p.md)
-- [1. Generar payload con msfvenom](pentesting/windows/1generarpayloadconm-fvenom.md)
-- [1. Preparar php-reverse-shell](pentesting/windows/1prepararphp-rever-e-hell.md)
-- [1. Verificación del contexto SYSTEM](pentesting/windows/1verificacindelcontexto-y-tem.md)
-- [Descubrimiento](pentesting/windows/de-cubrimiento.md)
-- [Flashcard — Escalada de Privilegios en **Windows Services** (versión detallada)](pentesting/windows/fla-hcarde-caladadeprivilegio-enwindow-ervice-ver-indetallada.md)
-- [Flashcard: Herramientas de Enumeración para Escalación de Privilegios en Windows](pentesting/windows/fla-hcardherramienta-deenumeracinparae-calacindeprivilegio-enwindow-.md)
-- [Flashcard — Windows Services Privilege Escalation](pentesting/windows/fla-hcardwindow-ervice-privilegee-calation.md)
-- [Flashcard: Windows Privilege Escalation (Privileges) — Completa](pentesting/windows/fla-hcardwindow-privilegee-calationprivilege-completa.md)
-- [Jerarquía de privilegios](pentesting/windows/jerarquadeprivilegio-.md)
-- [Para buscar](pentesting/windows/parabu-car.md)
-- [Quick Wins para Escalada de Privilegios en Windows](pentesting/windows/quickwin-parae-caladadeprivilegio-enwindow-.md)
-- [Ubicaciones típicas en Windows donde se pueden recuperar credenciales tras comprometer un host](pentesting/windows/ubicacione-tpica-enwindow-donde-epuedenrecuperarcredenciale-tra-comprometerunho-t.md)
-
-## Documentación (docs)
-
-- [1) Confirmar motor de plantillas](docs/cosas.md)
-
-## Scripts
-
-- [`impostor-juego-prueba.py`](scripts/impostor-juego-prueba.py)
-- [`prueba.py`](scripts/prueba.py)
-
-## Private / Trabajo
-
-
-## Assets (Pentesting)
-
-- [hammer.pdf](pentesting/assets/hammer.pdf)
-- [mr-robot.zip](pentesting/assets/mr-robot.zip)
-
----
-Este repositorio agrupa notas personales, apuntes y scripts relacionados con pentesting y seguridad informática.
-
-Estructura principales:
-- `pentesting/` — notas organizadas por subcategorías (linux, web, windows, tools, post-exploitation, privilege-escalation, notes)
-- `scripts/` — scripts utilizados para automatización y pruebas
-- `docs/` — documentación o apuntes complementarios
-- `private/` — archivos privados / trabajo (no subir a remotos públicos si contienen datos sensibles)
-
-Si encontrás títulos o nombres de archivo poco legibles, ejecutá `python3 scripts/generate_rename_suggestions.py` para generar `RENAME_SUGGESTIONS.md` con propuestas automáticas, revisalas y apruebalas para aplicar los `git mv`.
-```
+- [# Para buscar](pentesting/windows/para-buscar.md)
+- [## 1. Acotar por **cuenta de ejecución**](pentesting/windows/no-vas-a-mirar-a-mano-los-cientos-de-servicios-el-truco-es-f.md)
+- [## 1. Consideraciones previas](pentesting/windows/uso-de-socat-y-netcat-para-reverse-y-bind-shells-en-windows.md)
+- [## 1. Crear webshell básico en Windows (ejemplo PHP o ASP)](pentesting/windows/procedimiento-para-subir-webshell-en-windows-y-obtener-rever.md)
+- [## 1. Generar payload con msfvenom](pentesting/windows/generacion-y-uso-de-meterpreter-64-bit-windows-shell-con-msf.md)
+- [## 1. Preparar php-reverse-shell](pentesting/windows/procedimiento-para-subir-y-activar-php-reverse-shell-en-wind.md)
+- [## 1. Verificación del contexto SYSTEM](pentesting/windows/elevacion-de-privilegios-y-creacion-de-usuario-administrador.md)
+- [## Descubrimiento](pentesting/windows/flashcard-service-binary-hijacking-insecure-permissions.md)
+- [## Flashcard — Windows Services Privilege Escalation](pentesting/windows/flashcard-windows-services-privilege-escalation.md)
+- [## Flashcard: Herramientas de Enumeración para Escalación de Privilegios en Windows](pentesting/windows/flashcard-herramientas-de-enumeracion-para-escalacion-de-pri.md)
+- [## Flashcard: Windows Privilege Escalation (Privileges) — Completa](pentesting/windows/flashcard-windows-privilege-escalation-privileges-completa.md)
+- [## Jerarquía de privilegios](pentesting/windows/flashcard-windows-privilege-escalation-thm-room.md)
+- [## Quick Wins para Escalada de Privilegios en Windows](pentesting/windows/quick-wins-para-escalada-de-privilegios-en-windows.md)
+- [## Ubicaciones típicas en Windows donde se pueden recuperar credenciales tras comprometer un host](pentesting/windows/ubicaciones-tipicas-en-windows-donde-se-pueden-recuperar-cre.md)
+- [## ► SHELLS CON NETCAT, MKFIFO Y POWERSHELL – APUNTE COMPLETO Y OPERATIVO](pentesting/windows/shells-con-netcat-mkfifo-y-powershell-apunte-completo-y-oper.md)
+- [Flashcard — Escalada de Privilegios en **Windows Services** (versión detallada)](pentesting/windows/flashcard-escalada-de-privilegios-en-windows-services-versio.md)
