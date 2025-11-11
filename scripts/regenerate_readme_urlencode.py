@@ -136,6 +136,29 @@ def improve_summary(title: str, summary: str, p: Path, min_len: int = 30) -> str
     # Fallback to prettified filename
     return prettify_filename(p)
 
+def is_generic_title(title: str) -> bool:
+    if not title:
+        return True
+    t = title.strip().lower()
+    generic = ['comando', 'flashcard', 'sí', 'si', 'resumen', 'titulo', '1.', '1', 'front', 'unknown']
+    if t in generic:
+        return True
+    if len(t) < 6:
+        # very short titles like "sí", "comando" etc.
+        return True
+    # titles that are identical to file stem will be handled elsewhere
+    return False
+
+def improve_title(title: str, p: Path) -> str:
+    """Si el título es genérico o corto, construir un título más útil usando la carpeta y filename."""
+    if not is_generic_title(title):
+        return title
+    parent = p.parent.name
+    pretty = prettify_filename(p)
+    if parent and parent.lower() not in pretty.lower():
+        return f"{parent.replace('-', ' ').capitalize()}: {pretty}"
+    return pretty
+
 def url_for(rel_path: str) -> str:
     # GitHub expects paths with spaces encoded as %20; quote the path but keep slashes
     parts = rel_path.split('/')
