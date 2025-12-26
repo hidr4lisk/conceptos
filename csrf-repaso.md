@@ -105,8 +105,6 @@ Un solo payload puede afectar a **todos los usuarios autenticados** que lo visit
 Es un problema de **lógica y control de confianza**, no de criptografía.
 
 
-Explicación técnica en español, alineada a labs y sin relleno.
-
 ---
 
 ## CSRF tradicional (Traditional CSRF)
