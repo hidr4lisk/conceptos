@@ -222,3 +222,6 @@ En todos los casos:
 * el fallo está en no validar intención
 
 CSRF siempre es un problema de **confianza mal definida**, no de autenticación.
+
+---
+
