@@ -1,7 +1,7 @@
 # /etc/hosts
 
 ´´´
-echo "10.64.140.243 lists.tryhackme.loc" | sudo tee -a /etc/hosts
+echo "10.64.157.30 lists.tryhackme.loc" | sudo tee -a /etc/hosts
 
 ´´´
 
