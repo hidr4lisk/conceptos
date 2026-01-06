@@ -286,3 +286,329 @@ El ataque vive en:
 * Traducciones imperfectas.
 
 **El objetivo no es HTTP/2, sino la frontera entre protocolos.**
+
+
+
+### Request Tunneling vs Desync (HTTP Request Smuggling)
+
+#### 1. Diferencia estructural
+
+**Request Desync (clásico)**
+
+* El frontend (proxy) y el backend **comparten una conexión persistente**.
+* Un atacante **desincroniza** ambos parsers (CL/TE, TE/CL, etc.).
+* El payload inyectado **impacta requests de otros usuarios**.
+* Efectos típicos: session hijacking, cache poisoning cross-user.
+
+**Request Tunneling**
+
+* El frontend asigna **una conexión backend por usuario**.
+* No hay mezcla de tráfico entre usuarios.
+* El atacante **solo afecta su propia conexión**.
+* Aun así, puede **inyectar múltiples requests ocultas** dentro de una request válida.
+* Impacto: bypass de controles del frontend, acceso a endpoints internos, lógica inesperada en backend.
+
+Resumen rápido:
+
+```
+Desync  -> cross-user impact (shared backend connection)
+Tunneling -> single-user impact (per-user backend connection)
+```
+
+---
+
+#### 2. Qué cambia cuando hay per-user backend connections
+
+* El proxy **aísla conexiones** para evitar contaminación entre usuarios.
+* Se elimina el vector “envenenar al siguiente usuario”.
+* Pero **no se elimina el bug de parsing** entre frontend y backend.
+* Si el frontend acepta una request “mal formada” y el backend la interpreta distinto → **smuggling local**.
+
+Eso es **request tunneling**:
+
+> “Smuggleás requests, pero viajan solo por tu túnel”.
+
+---
+
+#### 3. Por qué sigue siendo explotable
+
+Aunque no puedas afectar a otros usuarios, todavía podés:
+
+* Bypassear ACLs del frontend
+* Saltar autenticación frontend-only
+* Acceder a endpoints internos (`/admin`, `/internal`, `/debug`)
+* Ejecutar requests que el frontend bloquearía por método/path
+* Encadenar requests (pipeline oculto)
+
+Ejemplo conceptual:
+
+```
+[Request visible al proxy]
+POST /public HTTP/1.1
+Content-Length: X
+
+[Request oculta para backend]
+GET /admin HTTP/1.1
+Host: backend
+```
+
+El proxy ve **una** request válida.
+El backend procesa **dos**.
+
+---
+
+#### 4. Caso del lab: HAProxy vulnerable (CVE-2019-19330)
+
+Datos clave:
+
+* **Frontend:** HAProxy viejo
+* **Vulnerabilidad:** CRLF injection
+* **Backend:** app vulnerable
+* **Acceso:** `https://10.65.187.207:8100`
+
+Qué permite CVE-2019-19330:
+
+* Inyectar `\r\n` en headers
+* Terminar headers prematuramente
+* Forzar al backend a parsear **requests adicionales**
+
+Esto **no requiere** conexiones compartidas.
+Funciona perfectamente con **per-user backend connections**.
+
+---
+
+#### 5. Modelo mental correcto
+
+```
+Frontend (HAProxy)
+- Cree que envió 1 request
+- Aplica reglas solo a esa
+
+Backend
+- Recibe N requests
+- Ejecuta todas
+```
+
+No hay “desync entre usuarios”, pero sí:
+
+* **Desync entre capas**
+* **Túnel de requests encadenadas**
+
+---
+
+#### 6. Conclusión operativa
+
+* **Desync** es más potente, pero depende de conexiones compartidas.
+* **Tunneling** es más común en arquitecturas modernas.
+* Impacto menor, pero **suficiente para bypass críticos**.
+* En este lab: el objetivo es **inyectar requests ocultas usando CRLF** y observar cómo el backend las ejecuta aunque el frontend no las vea.
+
+Idea clave:
+
+> *Per-user backend connection no elimina request smuggling; solo lo confina.*
+
+
+
+Voy a **desarmarlo en flujo técnico**, sin narrativa.
+
+---
+
+## Objetivo
+
+**Filtrar headers internos que el frontend (HAProxy) agrega antes de enviar la request al backend**, usando **request tunneling + CRLF injection**.
+
+No desync cross-user.
+Todo ocurre **en tu propio backend connection**.
+
+---
+
+## Arquitectura relevante
+
+```
+Browser (HTTP/2)
+   ↓
+HAProxy (vulnerable, downgrade HTTP/2 → HTTP/1.1)
+   ↓
+Backend app (HTTP/1.1)
+```
+
+Puntos clave:
+
+* El browser envía **HTTP/2**
+* HAProxy convierte a **HTTP/1.1**
+* HAProxy **inyecta headers internos** (Host, X-Internal-*, etc.)
+* HAProxy es vulnerable a **CRLF injection en headers** (CVE-2019-19330)
+
+---
+
+## Por qué se puede filtrar info
+
+El backend:
+
+* Tiene un endpoint `/hello`
+* Refleja el parámetro `q` del body en la response
+
+Si logramos que:
+
+* Los **headers internos** terminen dentro del **body del backend**
+  → el backend **nos los devuelve reflejados**
+
+---
+
+## Idea central del ataque
+
+1. Enviar **1 request HTTP/2**
+2. HAProxy la transforma en **2 requests HTTP/1.1**
+3. La **segunda request** contiene en su body:
+
+   * headers internos agregados por HAProxy
+4. El backend los refleja vía `q=...`
+
+Eso es **request tunneling**.
+
+---
+
+## Mecánica exacta
+
+### Paso 1 — Request base (HTTP/2)
+
+```http
+POST /hello HTTP/2
+Host: 10.65.187.207:8100
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+```
+
+Notas:
+
+* `Content-Length` **existe aunque HTTP/2 lo ignore**
+* Es crítico porque el backend sí lo usa tras el downgrade
+
+---
+
+### Paso 2 — Header inyectable (CRLF)
+
+Se agrega un header controlado:
+
+```
+Foo: <payload>
+```
+
+Ese payload incluye:
+
+* `\r\n` para cerrar headers
+* `Content-Length: 0` para **forzar fin del body**
+* Una **segunda request completa**
+
+---
+
+### Paso 3 — Payload conceptual (lo que ve el backend)
+
+```http
+POST /hello HTTP/1.1
+Host: 10.65.187.207
+Content-Length: 0
+
+POST /hello HTTP/1.1
+Host: 10.65.187.207
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 300
+
+q=<AQUÍ CAEN LOS HEADERS INTERNOS>
+```
+
+Cómo llegan ahí:
+
+* HAProxy agrega headers **después** de los del cliente
+* Esos headers quedan **entre** las dos requests
+* El backend los interpreta como parte del body de la segunda
+
+---
+
+## Por qué hay que inyectar `Host`
+
+HTTP/1.1 **requiere Host** por request.
+
+La primera request:
+
+* Termina antes de que HAProxy agregue su `Host`
+* Si no inyectás uno → backend rechaza la request
+
+Por eso el payload **incluye un Host explícito**.
+
+---
+
+## Content-Length del segundo POST
+
+```http
+Content-Length: 300
+```
+
+Función:
+
+* Reservar espacio suficiente para que entren:
+
+  * Host agregado por proxy
+  * X-Internal-*
+  * otros headers
+
+Valores:
+
+* Muy chico → headers truncados
+* Muy grande → backend queda esperando bytes → conexión colgada
+
+Es **trial & error**.
+
+---
+
+## Ejecución en Burp (clave técnica)
+
+* Repeater debe ser **HTTP/2**
+* `Update Content-Length` → **OFF**
+* El payload **NO se edita en texto**
+* Se edita en **Inspector**
+* CRLF = `SHIFT + ENTER`
+* Al aplicar → request queda **kettled**
+
+“Kettled” = no representable como texto plano.
+
+---
+
+## Por qué hay que enviar la request dos veces
+
+* Primera vez:
+
+  * Se procesa la **primera request**
+  * Response vacía
+* Segunda vez:
+
+  * El backend ya tiene la conexión
+  * Procesa la **segunda request**
+  * Refleja `q=...` → headers internos visibles
+
+---
+
+## Resultado esperado
+
+Response contiene algo como:
+
+```
+Host: backend
+X-Internal-User: proxy
+X-Forwarded-For: 10.x.x.x
+...
+```
+
+Eso confirma:
+
+* Request tunneling exitoso
+* Headers internos filtrados
+* Parsing inconsistente frontend/backend
+
+---
+
+## Resumen mental (en una línea)
+
+> **CRLF en HTTP/2 header → downgrade mal parseado → headers internos caen en body → backend los refleja**
+
+Eso es **Leaking Internal Headers vía Request Tunneling**.
