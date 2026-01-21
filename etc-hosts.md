@@ -9,3 +9,6 @@ Si no usás -a, pisás el archivo completo.
 
 
 echo "10.66.188.21 httprequestsmuggling.thm" | sudo tee -a /etc/hosts
+
+
+echo "10.82.143.108 bcts.thm" | sudo tee -a /etc/hosts
