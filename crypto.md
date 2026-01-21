@@ -27,13 +27,16 @@ RSA no “cifra”, **eleva a potencias módulo n**.
 
 ### Clave pública
 
-* ( n = p \times q )
-* ( e ) (normalmente 65537)
+* ( n = p por q )
+* ( e ) (normalmente 65537)    exponente público
 
 ### Clave privada
 
-* ( \varphi(n) = (p-1)(q-1) )
-* ( d = e^{-1} \mod \varphi(n) )
+
+    * ϕ(n)=(p−1)×(q−1), where ϕ is Euler's totient function.
+    * (d): The modular inverse of 𝑒 e modulo 𝜙 ( 𝑛 ) ϕ(n), 
+        satisfying 𝑒 × 𝑑 ≡ 1 ( mod 𝜙 ( 𝑛 ) ) e×d≡1 (mod ϕ(n)).
+
 
 Condición clave:
 [
